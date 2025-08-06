@@ -1,5 +1,4 @@
 
-
 import { Webhook } from "svix"
 import userModel from "../models/userModel.js";
 
@@ -9,7 +8,7 @@ const clerkWebHook=async(req,res)=>{
          const whook=new Webhook(process.env.CLERK_WEBHOOK_SECRET);
          await whook.verify(JSON.stringify(req.body),{
             "svix-id":req.headers["svix-id"],
-            "svix-timestamp":req.headers["svix-timestam"],
+            "svix-timestamp":req.headers["svix-timestamp"],
             "svix-signature":req.headers["svix-signature"]
          })
 
@@ -53,6 +52,6 @@ const clerkWebHook=async(req,res)=>{
          res.json({success:false,message:err.message})
          
     }
-    
+
 }
 export {clerkWebHook};
